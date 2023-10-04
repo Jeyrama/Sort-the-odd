@@ -18,3 +18,25 @@ function sortArray(array) {
 }
 
 // or
+
+function sortArray(array) {
+  let odds = [];
+  //loop, if it's odd, push to odds array
+  for (let i = 0; i < array.length; i++) {
+    if (array[i]%2 !== 0) {
+      odds.push(array[i]);
+    }
+  }
+  //sort odds from smallest to largest
+  odds.sort(function(a,b) {
+    return a-b
+  });
+
+  //loop through array, replace any odd values with sorted odd values
+  for (let j = 0; j < array.length; ++j) {
+    if (array[j]%2 !== 0) {
+      array[j] = odds.shift();
+    }
+  }
+  return array;
+}
